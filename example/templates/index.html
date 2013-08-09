@@ -1,0 +1,51 @@
+<html>
+<head>
+    <title>Flask-OtpAuth</title>
+    <style>
+        body { margin: 2em 4em; }
+        body, h1, h2 { font-family: monospace; }
+        form { display: inline-block; margin: 0; }
+    </style>
+</head>
+<body>
+<h1>Flask-OtpAuth</h1>
+
+<pre><code>&gt;&gt;&gt; from flask_otpauth import OtpAuth
+&gt;&gt;&gt; SECRET = secret
+&gt;&gt;&gt; auth = OtpAuth(app)
+</code></pre>
+
+<h2>HOTP</h2>
+<div>
+    &gt;&gt;&gt; auth.hotp(SECRET)
+    <br>{{ hotp(SECRET) }}
+</div>
+<div>
+    &gt;&gt;&gt; auth.valid_hotp(SECRET,
+    <form action="{{ url_for('check_hotp') }}" method="post"><input name="hotp" type="text"></form>)
+    {% for cat, msg in get_flashed_messages(with_categories=True) if cat == 'hotp' %}
+    <br>{{ msg }}
+    {% endfor %}
+</div>
+
+<h2>TOTP</h2>
+<div>
+    &gt;&gt;&gt; auth.totp(SECRET)
+    <br>{{ totp(SECRET) }}
+</div>
+<div>
+    &gt;&gt;&gt; auth.valid_totp(SECRET,
+    <form action="{{ url_for('check_totp') }}" method="post"><input name="totp" type="text"></form>)
+    {% for cat, msg in get_flashed_messages(with_categories=True) if cat == 'totp' %}
+    <br>{{ msg }}
+    {% endfor %}
+</div>
+
+<h2>Google Authenticator</h2>
+<div>
+    auth.google_qrcode(SECRET, 'totp', 'Example:foo@bar.baz', 'Foo')
+    <br><img src="{{ url_for('google_authenticator') }}">
+</div>
+
+</body>
+</html>
