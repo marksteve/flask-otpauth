@@ -7,7 +7,10 @@ Flask extension that works as a wrapper for https://github.com/lepture/otpauth.
 
 Example
 -------
-python example/example.py
+
+::
+
+    python example/example.py
 
 License
 -------
