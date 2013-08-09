@@ -6,6 +6,7 @@ if __name__ == '__main__':
         name='Flask-OtpAuth',
         version='0.0.1',
         description='One Time Password Authentication for Flask',
+        long_description=open('README.rst').read(),
         author='Mark Steve Samson',
         author_email='hello@marksteve.com',
         install_requires=[
